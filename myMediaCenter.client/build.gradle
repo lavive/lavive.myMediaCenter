@@ -11,6 +11,27 @@ plugins {
     id 'java-library'
 }
 
+//mainClassName='lavive.myMediaCenter.Client'
+//
+sourceSets {
+        main {
+                java {
+                        srcDirs= ["src/main/java"]
+                }
+                resources {
+                        srcDirs= ["src/main/resources"]
+                }
+        }
+        test {
+                java {
+                        srcDirs= ["src/test/java"]
+                }
+                resources {
+                        srcDirs= ["src/main/resources"]
+                }
+        }
+}
+
 dependencies {
     // This dependency is exported to consumers, that is to say found on their compile classpath.
     api 'org.apache.commons:commons-math3:3.6.1'
