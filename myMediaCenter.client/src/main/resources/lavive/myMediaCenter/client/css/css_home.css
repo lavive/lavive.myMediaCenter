@@ -1,0 +1,21 @@
+/***************************/
+/* CSS for home page       */
+/***************************/
+
+.menu_item {
+	-fx-background-color: red;
+}
+
+.menu_item_hovering {
+	-fx-background-color: orange;
+}
+
+.quit {
+	-fx-background-color: lime;
+}
+
+.quit_hovering {
+	-fx-background-color: yellow;
+	-fx-border-width: 4px;
+    -fx-border-color: lime;
+}

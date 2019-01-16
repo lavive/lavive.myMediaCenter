@@ -11,8 +11,8 @@ plugins {
     id 'java-library'
 }
 
-//mainClassName='lavive.myMediaCenter.Client'
-//
+//mainClassName='src.main.java.lavive.myMediaCenter.client.Client'
+
 sourceSets {
         main {
                 java {
@@ -27,7 +27,7 @@ sourceSets {
                         srcDirs= ["src/test/java"]
                 }
                 resources {
-                        srcDirs= ["src/main/resources"]
+                        srcDirs= ["src/test/resources"]
                 }
         }
 }
