@@ -8,11 +8,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
+import lavive.myMediaCenter.client.internationalization.I18n;
 import lavive.myMediaCenter.client.tools.PathsProject;
 import lavive.myMediaCenter.client.tools.Sizes;
 
@@ -27,6 +31,9 @@ public class HomeController implements Initializable {
 	/* Attributes */
 	
 	// Pane
+	@FXML
+	private AnchorPane mainPane;
+	
 	@FXML
 	private GridPane menu;
 
@@ -52,7 +59,7 @@ public class HomeController implements Initializable {
 	@FXML
 	private HBox radio;
 	
-	//ImageView
+	// ImageView
 	@FXML
 	private ImageView videosIcon;
 	
@@ -71,6 +78,22 @@ public class HomeController implements Initializable {
 	@FXML
 	private ImageView quitView;	
 	
+	// Label
+	@FXML
+	private Label videosLabel;
+	
+	@FXML
+	private Label musicLabel;
+	
+	@FXML
+	private Label picturesLabel;
+	
+	@FXML
+	private Label tvLabel;
+	
+	@FXML
+	private Label radioLabel;
+	
 	/* Constructor */
 	public HomeController() {
 		
@@ -78,6 +101,13 @@ public class HomeController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		/* set Text */
+		videosLabel.setText(I18n.getString("home.menu.videos"));
+		musicLabel.setText(I18n.getString("home.menu.music"));
+		picturesLabel.setText(I18n.getString("home.menu.pictures"));
+		tvLabel.setText(I18n.getString("home.menu.tv"));
+		radioLabel.setText(I18n.getString("home.menu.radio"));
+		
 		/* set sizes */
 		menu.setMaxWidth(Sizes.SCREEN_WIDTH/4);
 		emptyRight.setMinWidth(3*Sizes.SCREEN_WIDTH/4);
@@ -108,12 +138,22 @@ public class HomeController implements Initializable {
 		quitView.setImage(image);
         
 		/* apply css */
+		mainPane.getStyleClass().add("main_pane");
 		videos.getStyleClass().add("menu_item");
 		music.getStyleClass().add("menu_item");
 		pictures.getStyleClass().add("menu_item");
 		tv.getStyleClass().add("menu_item");
 		radio.getStyleClass().add("menu_item");
 		quit.getStyleClass().add("quit");
+		
+		/* apply font */
+		String font = this.getClass().getResource(PathsProject.FONTS_HOME_PATH).toExternalForm();
+		Font.loadFont(font, 10);
+		videosLabel.getStyleClass().add("menu_item_label");
+		musicLabel.getStyleClass().add("menu_item_label");
+		picturesLabel.getStyleClass().add("menu_item_label");
+		tvLabel.getStyleClass().add("menu_item_label");
+		radioLabel.getStyleClass().add("menu_item_label");
 	}
 	
 	/* Effect method */	

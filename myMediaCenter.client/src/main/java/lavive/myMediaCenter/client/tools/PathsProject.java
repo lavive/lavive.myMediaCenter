@@ -7,6 +7,11 @@ public class PathsProject {
 	/* general path */
 	public static final String PROJECT_PATH = System.getProperty("user.dir");
 	
+	private static final String PACKAGE_PATH = "lavive.myMediaCenter.client";
+	
+    /* I18n path */
+    public static final String I18N_PATH = PACKAGE_PATH + ".internationalization.I18n"; 
+	
 	/* Images paths */
 	private static final String IMAGES_PATH = File.separator + "lavive" +
 	                                          File.separator + "myMediaCenter" + 
@@ -39,5 +44,14 @@ public class PathsProject {
                                           
 	public static final String CSS_HOME_PATH = CSS_PATH + File.separator +
                                               "css_home.css";
+	
+	/* Font paths */
+	private static final String FONTS_PATH = File.separator + "lavive" + 
+            							     File.separator + "myMediaCenter" + 
+            							     File.separator + "client" + 
+            							     File.separator + "fonts";
+           
+    public static final String FONTS_HOME_PATH = FONTS_PATH + File.separator +
+                                                 "VideoPhreak.ttf";   
 
 }
