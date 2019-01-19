@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="912.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lavive.myMediaCenter.client.view.MediasDisplayController">
+   <top>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="topPane" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <StackPane prefHeight="150.0" prefWidth="921.0">
+                     <children>
+                        <HBox fx:id="titleBox" alignment="CENTER" StackPane.alignment="CENTER">
+                           <children>
+                              <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" text="TiTLE" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" StackPane.alignment="CENTER_LEFT">
+                           <children>
+                              <HBox fx:id="backBox" alignment="CENTER" onMouseEntered="#backWindowEnter" onMouseExited="#backWindowExited" prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fx:id="back" fitHeight="100.0" fitWidth="100.0" onMouseClicked="#backToLastWindow" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../../resources/lavive/myMediaCenter/client/images/mediasDisplay/baseline_subdirectory_arrow_left_black_36dp.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </ImageView>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </HBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </StackPane>
+               </children>
+            </HBox>
+            <HBox fx:id="menuTopPane" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <HBox fx:id="skipToFirst1Box" alignment="CENTER" onMouseEntered="#firstEnter1" onMouseExited="#firstExited1" prefHeight="50.0" prefWidth="50.0">
+                     <children>
+                        <ImageView fx:id="skipToFirst1" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#goToFirstPane" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../resources/lavive/myMediaCenter/client/images/mediasDisplay/baseline_fast_rewind_black_24dp.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </HBox>
+                  <HBox fx:id="skipBack1Box" alignment="CENTER" onMouseEntered="#backEnter1" onMouseExited="#backExited1" prefHeight="50.0" prefWidth="50.0">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                     <children>
+                        <ImageView fx:id="skipBack1" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#skipBackPane" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../resources/lavive/myMediaCenter/client/images/mediasDisplay/baseline_skip_previous_black_24dp.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="skipNext1Box" alignment="CENTER" onMouseEntered="#nextEnter1" onMouseExited="#nextExited1" prefHeight="50.0" prefWidth="50.0">
+                     <children>
+                        <ImageView fx:id="skipNext1" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#skipNextPane" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../resources/lavive/myMediaCenter/client/images/mediasDisplay/baseline_skip_next_black_24dp.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </HBox>
+                  <HBox fx:id="skipToLast1Box" alignment="CENTER" onMouseEntered="#lastEnter1" onMouseExited="#lastExited1" prefHeight="50.0" prefWidth="50.0">
+                     <children>
+                        <ImageView fx:id="skipToLast1" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#goToLastPane" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../resources/lavive/myMediaCenter/client/images/mediasDisplay/baseline_fast_forward_black_24dp.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+   <bottom>
+      <HBox fx:id="menuBottomPane" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="skipToFirst2Box" alignment="CENTER" onMouseEntered="#firstEnter2" onMouseExited="#firstExited2" prefHeight="50.0" prefWidth="50.0">
+               <children>
+                  <ImageView fx:id="skipToFirst2" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#goToFirstPane" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../resources/lavive/myMediaCenter/client/images/mediasDisplay/baseline_fast_rewind_black_24dp.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </HBox>
+            <HBox fx:id="skipBack2Box" alignment="CENTER" onMouseEntered="#backEnter2" onMouseExited="#backExited2" prefHeight="50.0" prefWidth="50.0">
+               <children>
+                  <ImageView fx:id="skipBack2" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#skipBackPane" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../resources/lavive/myMediaCenter/client/images/mediasDisplay/baseline_skip_previous_black_24dp.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </HBox>
+            <HBox fx:id="skipNext2Box" alignment="CENTER" onMouseEntered="#nextEnter2" onMouseExited="#nextExited2" prefHeight="50.0" prefWidth="50.0">
+               <children>
+                  <ImageView fx:id="skipNext2" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#skipNextPane" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../resources/lavive/myMediaCenter/client/images/mediasDisplay/baseline_skip_next_black_24dp.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </HBox>
+            <HBox fx:id="skipToLast2Box" alignment="CENTER" onMouseEntered="#lastEnter2" onMouseExited="#lastExited2" prefHeight="50.0" prefWidth="50.0">
+               <children>
+                  <ImageView fx:id="skipToLast2" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#goToLastPane" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../resources/lavive/myMediaCenter/client/images/mediasDisplay/baseline_fast_forward_black_24dp.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </HBox>
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+      <TilePane fx:id="mediasDisplayView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

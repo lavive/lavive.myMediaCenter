@@ -1,0 +1,39 @@
+/*******************************/
+/* CSS for medias display page */
+/*******************************/
+
+.main_pane {
+	-fx-background-color: navy;
+}
+
+.back {
+	-fx-background-color: green;
+}
+
+.back_hovering {
+	-fx-background-color: yellow;
+}
+
+.skip_menu {
+	-fx-background-color: darkblue;
+}
+
+.skip {
+	-fx-background-color: grey;
+}
+
+.skip_hovering {
+	-fx-background-color: lightgrey;
+}
+
+@font-face {
+    font-family: VideoPhreak;
+    src: url('VideoPhreak.ttf');
+}
+
+.title_label {
+    -fx-background-color: transparent;
+    -fx-font-family: VideoPhreak;
+    -fx-text-fill: lightgrey;
+    -fx-font-size: 60px;
+}

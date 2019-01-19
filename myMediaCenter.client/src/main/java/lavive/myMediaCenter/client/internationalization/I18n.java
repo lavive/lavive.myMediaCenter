@@ -5,6 +5,12 @@ import java.util.ResourceBundle;
 
 import lavive.myMediaCenter.client.tools.PathsProject;
 
+/**
+ * Manage internationalization
+ * 
+ * @author lavive
+ *
+ */
 public class I18n {
 	
 	

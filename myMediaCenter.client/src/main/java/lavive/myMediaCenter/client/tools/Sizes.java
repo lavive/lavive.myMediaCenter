@@ -3,6 +3,12 @@ package lavive.myMediaCenter.client.tools;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 
+/**
+ * Constants to set sizes
+ * 
+ * @author lavive
+ *
+ */
 public class Sizes {
 
 	/* screen size */

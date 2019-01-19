@@ -5,9 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import lavive.myMediaCenter.client.tools.PathsProject;
-import lavive.myMediaCenter.client.tools.Sizes;
+import lavive.myMediaCenter.client.tools.StageSettings;
+import lavive.myMediaCenter.client.view.HomeController;
 
 public class Client extends Application {
 
@@ -19,23 +19,17 @@ public class Client extends Application {
         loader.setLocation(Client.class.getResource("view/home.fxml"));
         
         AnchorPane rootLayout = (AnchorPane) loader.load();
+        HomeController controller = loader.getController();
         
-        // Show the scene containing the root layout.
+        // Set the scene containing the root layout.
         Scene scene = new Scene(rootLayout);
         String css = this.getClass().getResource(PathsProject.CSS_HOME_PATH).toExternalForm(); 
         scene.getStylesheets().add(css);
-        //rootLayout.getStyleClass().add("menu_item");
+        
+        // Set the stage
+        StageSettings.setFitScreen(primaryStage, false);
         primaryStage.setScene(scene);
-        //primaryStage.setFullScreen(true);
-        primaryStage.setResizable(false);
-        primaryStage.initStyle(StageStyle.UNDECORATED);
-        //Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
-
-        //set Stage boundaries to visible bounds of the main screen
-        primaryStage.setX(Sizes.SCREEN_X);//primaryScreenBounds.getMinX());
-        primaryStage.setY(Sizes.SCREEN_Y);//primaryScreenBounds.getMinY());
-        primaryStage.setWidth(Sizes.SCREEN_WIDTH);//primaryScreenBounds.getWidth());
-        primaryStage.setHeight(Sizes.SCREEN_HEIGHT);//primaryScreenBounds.getHeight());
+        controller.setCurrentStage(primaryStage);
         primaryStage.show();
 
 	}
