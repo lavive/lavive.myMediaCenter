@@ -1,0 +1,23 @@
+/*******************************/
+/* CSS for media view          */
+/*******************************/
+
+.main_pane {
+	-fx-background-color: navy;
+}
+
+.skip {
+	-fx-background-color: grey;
+}
+
+@font-face {
+    font-family: VideoPhreak;
+    src: url('VideoPhreak.ttf');
+}
+
+.title_label {
+    -fx-background-color: transparent;
+    -fx-font-family: VideoPhreak;
+    -fx-text-fill: lightgrey;
+    -fx-font-size: 14px;
+}

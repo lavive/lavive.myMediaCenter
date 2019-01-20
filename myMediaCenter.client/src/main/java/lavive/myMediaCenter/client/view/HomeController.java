@@ -8,7 +8,6 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
@@ -23,9 +22,9 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import lavive.myMediaCenter.client.Client;
 import lavive.myMediaCenter.client.internationalization.I18n;
+import lavive.myMediaCenter.client.tools.MediasDisplayHelper;
 import lavive.myMediaCenter.client.tools.PathsProject;
 import lavive.myMediaCenter.client.tools.Sizes;
-import lavive.myMediaCenter.client.tools.StageSettings;
 
 /**
  * Home page Controller
@@ -276,20 +275,23 @@ public class HomeController implements Initializable {
 			e.printStackTrace();
 		}
         MediasDisplayController controller = loader.getController();
-		controller.setTitle(I18n.getString("home.menu."+menu.toLowerCase()));
-        
-        // Set the scene containing the root layout.
-        Scene scene = new Scene(rootLayout);
-        String css = this.getClass().getResource(PathsProject.CSS_MEDIAS_PATH).toExternalForm(); 
-        scene.getStylesheets().add(css);
-        
-        // Set the stage
-		Stage nextStage = new Stage();
-        StageSettings.setFitScreen(nextStage, false);
-        nextStage.setScene(scene);
-
-        controller.setBackStage(currentStage);
-        controller.setCurrentStage(nextStage);
+//		controller.setTitle(I18n.getString("home.menu."+menu.toLowerCase()));
+//        controller.setMediasModels(MediasDisplayHelper.listModel(150),2);
+//        
+//        // Set the scene containing the root layout.
+//        Scene scene = new Scene(rootLayout);
+//        String css = this.getClass().getResource(PathsProject.CSS_MEDIAS_PATH).toExternalForm(); 
+//        scene.getStylesheets().add(css);
+//        
+//        // Set the stage
+//		Stage nextStage = new Stage();
+//        StageSettings.setFitScreen(nextStage, false);
+//        nextStage.setScene(scene);
+//
+//        controller.setBackStage(currentStage);
+//        controller.setCurrentStage(nextStage);
+        Stage nextStage = MediasDisplayHelper.createStage(currentStage, controller, rootLayout,
+        		                                          I18n.getString("home.menu."+menu.toLowerCase()), 0);
         currentStage.close();
         nextStage.show();
 		

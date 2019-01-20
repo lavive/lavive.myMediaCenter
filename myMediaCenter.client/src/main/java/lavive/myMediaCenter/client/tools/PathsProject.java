@@ -74,6 +74,9 @@ public class PathsProject {
     
     public static final String CSS_MEDIAS_PATH = CSS_PATH + File.separator +
                                                  "css_mediasDisplay.css";
+    
+    public static final String CSS_MEDIA_VIEW_PATH = CSS_PATH + File.separator +
+                                                     "css_mediaView.css";
 	
 	/* Font paths */
 	private static final String FONTS_PATH = File.separator + "lavive" + 

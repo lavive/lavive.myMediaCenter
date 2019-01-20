@@ -1,10 +1,14 @@
 package lavive.myMediaCenter.client.view;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -12,6 +16,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
+import lavive.myMediaCenter.client.Client;
+import lavive.myMediaCenter.client.model.MediaModel;
+import lavive.myMediaCenter.client.tools.MediasDisplayHelper;
 import lavive.myMediaCenter.client.tools.PathsProject;
 import lavive.myMediaCenter.client.tools.Sizes;
 
@@ -98,6 +105,10 @@ public class MediasDisplayController implements Initializable {
 	
 	private Stage currentStage;
 	
+	private List<MediaModel> mediasModels;
+	
+	private int indiceStage;
+	
 	/* Constructor */
 	public MediasDisplayController() {
 		
@@ -111,7 +122,12 @@ public class MediasDisplayController implements Initializable {
 		topPane.setMaxHeight(Sizes.SCREEN_HEIGHT/10);
 		menuTopPane.setMaxHeight(Sizes.SCREEN_HEIGHT/20);
 		menuBottomPane.setMaxHeight(Sizes.SCREEN_HEIGHT/20);
+		mediasDisplayView.setMaxWidth(Sizes.SCREEN_WIDTH);
 		mediasDisplayView.setMaxHeight(8*Sizes.SCREEN_HEIGHT/10);
+		//TilePane.setMargin(mediasDisplayView, new Insets(Sizes.MEDIAS_DISPLAY_MARGING));
+		mediasDisplayView.setHgap(Sizes.MEDIAS_DISPLAY_SPACING);
+		mediasDisplayView.setVgap(Sizes.MEDIAS_DISPLAY_SPACING);
+		mediasDisplayView.setPadding(new Insets(Sizes.MEDIAS_DISPLAY_MARGING));
 		
 		/* load images */
 		String css = this.getClass().getResource(PathsProject.IMAGES_RETURN_PATH).toExternalForm(); 
@@ -164,6 +180,7 @@ public class MediasDisplayController implements Initializable {
 		skipBack2Box.getStyleClass().add("skip");
 		skipNext2Box.getStyleClass().add("skip");
 		title.getStyleClass().add("title_label");
+		mediasDisplayView.getStyleClass().add("back");
 		
 	}
 	
@@ -250,22 +267,79 @@ public class MediasDisplayController implements Initializable {
 
 	@FXML
 	public void goToLastPane() {
-		
+        // Load root layout from fxml file.
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Client.class.getResource("view/mediasDisplay.fxml"));
+        
+        BorderPane rootLayout = null;
+		try {
+			rootLayout = (BorderPane) loader.load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        MediasDisplayController controller = loader.getController();
+        Stage nextStage = MediasDisplayHelper.createStage(backStage, controller, rootLayout, title.getText(),
+        		                                          (int)mediasModels.size()/Sizes.MEDIA_NUMBER_STAGE);
+        currentStage.close();
+        nextStage.show();
 	}
 
 	@FXML
 	public void goToFirstPane() {
-		
+        // Load root layout from fxml file.
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Client.class.getResource("view/mediasDisplay.fxml"));
+        
+        BorderPane rootLayout = null;
+		try {
+			rootLayout = (BorderPane) loader.load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        MediasDisplayController controller = loader.getController();
+        Stage nextStage = MediasDisplayHelper.createStage(backStage, controller, rootLayout, title.getText(), 0);
+        currentStage.close();
+        nextStage.show();
 	}
 
 	@FXML
 	public void skipBackPane() {
-		
+        // Load root layout from fxml file.
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Client.class.getResource("view/mediasDisplay.fxml"));
+        
+        BorderPane rootLayout = null;
+		try {
+			rootLayout = (BorderPane) loader.load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        MediasDisplayController controller = loader.getController();
+        Stage nextStage = MediasDisplayHelper.createStage(backStage, controller, rootLayout, title.getText(), indiceStage-1);
+        currentStage.close();
+        nextStage.show();
 	}
 
 	@FXML
 	public void skipNextPane() {
-		
+        // Load root layout from fxml file.
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Client.class.getResource("view/mediasDisplay.fxml"));
+        
+        BorderPane rootLayout = null;
+		try {
+			rootLayout = (BorderPane) loader.load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        MediasDisplayController controller = loader.getController();
+        Stage nextStage = MediasDisplayHelper.createStage(backStage, controller, rootLayout, title.getText(), indiceStage+1);
+        currentStage.close();
+        nextStage.show();
 	}
 	
 	/* setter */
@@ -280,6 +354,28 @@ public class MediasDisplayController implements Initializable {
 
 	public void setCurrentStage(Stage currentStage) {
 		this.currentStage = currentStage;
+	}
+
+	public void setMediasModels(List<MediaModel> mediasModels, int indiceStage) {
+		this.mediasModels = mediasModels;	
+		this.indiceStage = indiceStage;	
+		if(mediasModels.size() <= Sizes.MEDIA_NUMBER_STAGE) {
+			menuTopPane.setVisible(false);
+			menuBottomPane.setVisible(false);
+		} else if(indiceStage == 0) {
+			skipToFirst1Box.setVisible(false);
+			skipToFirst2Box.setVisible(false);	
+			skipBack1Box.setVisible(false);
+			skipBack2Box.setVisible(false);			
+		} else if((indiceStage+1)*Sizes.MEDIA_NUMBER_STAGE > mediasModels.size()) {
+			skipToLast1Box.setVisible(false);
+			skipToLast2Box.setVisible(false);	
+			skipNext1Box.setVisible(false);
+			skipNext2Box.setVisible(false);
+		}
+		MediasDisplayHelper.addMedias(this.mediasModels, mediasDisplayView,
+				                      indiceStage*Sizes.MEDIA_NUMBER_STAGE,
+				                      Math.min(mediasModels.size(),(indiceStage+1)*Sizes.MEDIA_NUMBER_STAGE));
 	}
 	
 	/* helper methods */

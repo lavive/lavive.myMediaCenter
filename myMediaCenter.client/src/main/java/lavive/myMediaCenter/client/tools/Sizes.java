@@ -18,4 +18,11 @@ public class Sizes {
 	public static double SCREEN_Y = primaryScreenBounds.getMinY();
 	public static double SCREEN_WIDTH = primaryScreenBounds.getWidth();
 	public static double SCREEN_HEIGHT = primaryScreenBounds.getHeight();
+	
+	/* max medias number per stage */
+	public static int MEDIA_NUMBER_STAGE = 20;
+	
+	/* spacing between medias display */
+	public static double MEDIAS_DISPLAY_SPACING = 20.0;
+	public static double MEDIAS_DISPLAY_MARGING = 10.0;
 }
